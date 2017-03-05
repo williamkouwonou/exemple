@@ -25,8 +25,6 @@ import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
@@ -50,7 +48,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String tel;
 
     @Email
-    @Pattern(regexp = Constants.LOGIN_REGEX)
+    @Pattern(regexp = Constants.EMAIL_REGEX)
     private String email;
 
     @NotNull
@@ -58,6 +56,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(min = 1, max = 50)
     @Column(length = 50, unique = true, nullable = false)
     private String login;
+    
+    
     private String password;
 
     @NotNull
@@ -154,7 +154,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.password = password;
     }
 
-    public boolean isActivated() {
+    public boolean getActivated() {
         return activated;
     }
 

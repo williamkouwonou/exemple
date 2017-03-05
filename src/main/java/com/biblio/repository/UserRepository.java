@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.data.repository.query.Param;
 
 /**
  * Spring Data JPA repository for the User entity.
@@ -27,6 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneByEmail(String email);
 
     Optional<User> findOneByLogin(String login);
+    Optional<User> findOneById(Long id);
 
     
     User findByLogin(String login);
