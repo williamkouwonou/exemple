@@ -79,7 +79,10 @@
             <version>1</version>
             <type>jar</type>
         </dependency>
-        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+        </dependency>
        
     </dependencies>
     

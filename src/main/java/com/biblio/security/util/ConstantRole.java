@@ -9,6 +9,7 @@ package com.biblio.security.util;
  *
  * @author kouwonou
  */
-public class ConstantRole {
-    
+public final  class ConstantRole {
+    public final static String  ADMIN_ROLE ="ADMIN";
+    public final static String USER_ROLE ="USER";
 }
