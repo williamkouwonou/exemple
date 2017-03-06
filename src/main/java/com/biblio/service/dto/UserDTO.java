@@ -1,6 +1,8 @@
 package com.biblio.service.dto;
 
 import com.biblio.config.util.Constants;
+import com.biblio.web.rest.util.Utils;
+import java.text.ParseException;
 import java.util.Date;
 import org.hibernate.validator.constraints.Email;
 
@@ -25,6 +27,7 @@ public class UserDTO {
     @NotNull
     private String prenom;
     
+    @NotNull
     private Date dateNaissance;
 
     @NotNull
@@ -83,6 +86,9 @@ public class UserDTO {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+    public void setDateNaissance(String dateNaissance) throws ParseException {
+        this.dateNaissance = Utils.convertToDate(dateNaissance);
     }
 
     public String getTel() {

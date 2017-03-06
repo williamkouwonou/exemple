@@ -12,6 +12,7 @@ package com.biblio.config.util;
 public final class Constants {
  public static final String ERROR="error";
  public static final String MESSAGE="message";
+ public static final String RESULTAT ="resultat";
     //Regex for acceptable logins
     public static final String LOGIN_REGEX = "^[_'.@A-Za-z0-9-]*$";
     //Regex for acceptable logins

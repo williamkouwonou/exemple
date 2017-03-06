@@ -153,7 +153,7 @@ public class UserService {
     }
 
     public void updateUser(Long id, String login, String nom, String prenom,Date dateNaissance, String email,
-            boolean activated,  String tel, Set<String> roles, String password) {
+            boolean activated,  String tel, Set<String> roles) {
        
         userRepository
                 .findOneById(id)
@@ -165,8 +165,7 @@ public class UserService {
                     u.setActivated(activated);
                     u.setDateNaissance(dateNaissance);
                     u.setTel(tel);
-                    String encryptedPassword = passwordEncoder.encode(password);
-                    u.setPassword(encryptedPassword);
+ 
                    
                     Set<Role> managedRoles = u.getRoles();
                     managedRoles.clear();
