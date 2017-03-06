@@ -1,7 +1,6 @@
 package com.biblio.security;
 
 
-import com.biblio.entity.User;
 import com.biblio.security.util.ConstantRole;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import org.springframework.security.core.userdetails.User;
 
 /**
  * Utility class for Spring Security.
@@ -46,7 +46,7 @@ public final class SecurityUtils {
         String userName = null;
         if (authentication != null) {
             User u = (User) authentication.getPrincipal();
-            userName = u.getLogin();
+            userName = u.getUsername();
         }
 
         return userName;

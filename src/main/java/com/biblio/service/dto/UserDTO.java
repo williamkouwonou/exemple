@@ -2,12 +2,10 @@ package com.biblio.service.dto;
 
 import com.biblio.config.util.Constants;
 import java.util.Date;
-import java.util.HashSet;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.*;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * A DTO representing a user, with his authorities.
@@ -26,20 +24,24 @@ public class UserDTO {
     @Size(min = 3, max = 50)
     @NotNull
     private String prenom;
-private Date dateNaissance;
+    
+    private Date dateNaissance;
 
-@NotNull
+    @NotNull
     @Size(min = 7, max = 20)
     private String tel;
 
     @Email
     @Size(min = 5, max = 100)
+    @NotNull
     private String email;
 
     private boolean activated = false;
 
-   
     private Set<String> roles;
+
+    public UserDTO() {
+    }
 
     public UserDTO(String login, String nom, String prenom, Date dateNaissance, String tel, String email, Set<String> roles) {
         this.login = login;
@@ -115,5 +117,4 @@ private Date dateNaissance;
         this.roles = roles;
     }
 
-    
 }

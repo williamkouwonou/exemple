@@ -14,6 +14,7 @@ import com.biblio.web.rest.vm.ManagedUserVM;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -42,7 +43,7 @@ public class UserResource {
             method = RequestMethod.POST,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
    
-    public Object createUser(@RequestBody ManagedUserVM managedUserVM, BindingResult bindingResult) {
+    public Object createUser(@RequestBody @Valid ManagedUserVM managedUserVM, BindingResult bindingResult) {
         Map<String, Object> modele = new HashMap<>();
         if (bindingResult.hasErrors()) {
 
@@ -55,13 +56,13 @@ public class UserResource {
 
             return modele;
         }
-        if (userRepository.findOneByLogin(managedUserVM.getLogin()) != null) {
+        if (userRepository.findOneByLogin(managedUserVM.getLogin()) .isPresent()) {
             modele.put(Constants.ERROR, "true");
             modele.put(Constants.MESSAGE, "Enregistrement échoué");
             modele.put("login", "Ce nom d'utilisateur existe deja");
             return modele;
         }
-        if (userRepository.findOneByEmail(managedUserVM.getEmail()) != null) {
+        if (userRepository.findOneByEmail(managedUserVM.getEmail()).isPresent()) {
             modele.put(Constants.ERROR, "true");
             modele.put(Constants.MESSAGE, "Enregistrement échoué");
             modele.put("email", "Ce email est deja utilisé");
