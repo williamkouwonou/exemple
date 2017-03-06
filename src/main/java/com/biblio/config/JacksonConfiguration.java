@@ -30,7 +30,7 @@ public class JacksonConfiguration {
             .append(DateTimeFormatter.ISO_TIME)
             .toFormatter();
 
-    @Autowired
+    @Autowired 
     private Jackson2ObjectMapperBuilder builder;
 
     //To be replaced by a Jackson2ObjectMapperBuilderCustomizer in Spring-boot 1.4
